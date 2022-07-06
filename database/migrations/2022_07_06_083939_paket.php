@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('fasilitas');
             $table->string('fasilitas2');
             $table->string('fasilitas3');
+            $table->string('url_pic');
             $table->integer('harga');
             $table->timestamps();
         });

@@ -17,6 +17,7 @@ class paket extends Model
         'fasilitas2',
         'fasilitas3',
         'harga',
+        'url_pic',
     ];
 
 }

@@ -19,9 +19,12 @@ class PaketController extends Controller
 		return view('admin.package.add');
 	}
 
-	public function getAll(){
+	public static function getAll(){
 		$dbpaket = DB::table('paket')->get();
-		return $dbpaket;
+		return response()->json([
+			'success' => true,
+			'data' => $dbpaket
+		   ]);
 	}
 
     public function store(Request $request) {
@@ -33,6 +36,7 @@ class PaketController extends Controller
             'fasilitas2' => $request->fasilitas2,
             'fasilitas3' => $request->fasilitas3,
             'harga' => $request->harga,
+			'url_pic' => $request->url_pic
 		]);
 
 		return redirect('/package');

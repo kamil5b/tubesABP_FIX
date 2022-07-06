@@ -9,23 +9,15 @@ use App\Models\bookings;
 class BookingsController extends Controller
 {
 
-	public function getAll($user_id){
-		$dbbookings = DB::table('bookings')->where('user_id', $user_id)->get();
+	public static function getAll($user_id){
+		$dbbookings = DB::table('bookings')->join('paket', 'paket.id', '=', 'bookings.paket_id')->where('user_id', $user_id)->select('bookings.id as id', 'user_id','tanggal','paket.id as paket_id','nama','durasi',"pulau",'harga','url_pic')->get();
 		return response()->json([
 			'success' => true,
 			'data' => $dbbookings
 		   ]);
 	}
 
-	public function get($id){
-		$dbbookings = DB::table('bookings')->where('id', $id)->get();
-		return response()->json([
-			'success' => true,
-			'data' => $dbbookings
-		   ]);
-	}
-
-    public function store(Request $request) {
+    public static function store(Request $request) {
 		DB::table('bookings')->insert([
 			'paket_id' => $request->paket_id,
             'user_id' => $request->user_id,
@@ -37,7 +29,7 @@ class BookingsController extends Controller
 		   ]);
     }
 
-    public function hapus($id)
+    public static function hapus($id)
 	{
 
 		DB::table('bookings')->where('id',$id)->delete();
@@ -47,7 +39,7 @@ class BookingsController extends Controller
 		   ]);
 	}
 
-    public function update(Request $request)
+    public static function update(Request $request)
 	{
 		DB::table('bookings')->where('id',$request->id)->update([
 			'tanggal' => $request->tanggal,
