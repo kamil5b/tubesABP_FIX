@@ -17,6 +17,14 @@ class BookingsController extends Controller
 		   ]);
 	}
 
+	public function get($id){
+		$dbbookings = DB::table('bookings')->where('id', $id)->get();
+		return response()->json([
+			'success' => true,
+			'data' => $dbbookings
+		   ]);
+	}
+
     public function store(Request $request) {
 		DB::table('bookings')->insert([
 			'paket_id' => $request->paket_id,
