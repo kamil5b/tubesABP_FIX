@@ -2,7 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-//use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PaketController;
+use App\Http\Controllers\BookingsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,14 +26,14 @@ Route::get('/paket/get',function () {
     return PaketController::getAll();
 });
 Route::get('/bookings/{user_id}',function ($user_id) {
-    return PaketController::getAll($user_id);
+    return BookingsController::getAll($user_id);
 });
 Route::post('/bookings/add',function (Request $request) {
-    return PaketController::store($request);
+    return BookingsController::store($request);
 });
-Route::get('/bookings/delete/{$id}',function ($id) {
-    return PaketController::hapus($id);
+Route::delete('/bookings/delete/{$id}',function ($id) {
+    return BookingsController::hapus($id);
 });
-Route::post('/bookings/get',function (Request $request) {
-    return PaketController::update($request);
+Route::put('/bookings/edit',function (Request $request) {
+    return BookingsController::update($request);
 });
