@@ -27,12 +27,12 @@ Route::get('/paket/get',function () {
 Route::get('/bookings/{user_id}',function ($user_id) {
     return PaketController::getAll($user_id);
 });
-Route::post('/paket/add',function (Request $request) {
+Route::post('/bookings/add',function (Request $request) {
     return PaketController::store($request);
 });
-Route::get('/paket/delete/{$id}',function ($id) {
+Route::get('/bookings/delete/{$id}',function ($id) {
     return PaketController::hapus($id);
 });
-Route::post('/paket/get',function (Request $request) {
+Route::post('/bookings/get',function (Request $request) {
     return PaketController::update($request);
 });
