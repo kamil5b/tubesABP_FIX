@@ -31,7 +31,7 @@ Route::get('/bookings/{user_id}',function ($user_id) {
 Route::post('/bookings/add',function (Request $request) {
     return BookingsController::store($request);
 });
-Route::delete('/bookings/delete/{$id}',function ($id) {
+Route::delete('/bookings/delete/{id}',function ($id) {
     return BookingsController::hapus($id);
 });
 Route::put('/bookings/edit',function (Request $request) {
